@@ -1,0 +1,10 @@
+import sys
+from collections import Counter
+
+text = sys.stdin.read()
+words = text.split()
+counter = Counter(words)
+
+max_freq = max(counter.values())
+candidates = [w for w, cnt in counter.items() if cnt == max_freq]
+print(min(candidates))
