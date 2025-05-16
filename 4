@@ -1,0 +1,17 @@
+import sys
+from collections import defaultdict
+
+data = defaultdict(lambda: defaultdict(int))
+
+for line in sys.stdin:
+    line = line.strip()
+    if not line:
+        continue
+    buyer, product, count = line.split()
+    count = int(count)
+    data[buyer][product] += count
+
+for buyer in sorted(data):
+    print(f"{buyer}:")
+    for product in sorted(data[buyer]):
+        print(f"{product} {data[buyer][product]}")
